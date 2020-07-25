@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>StudentList page</title>
+</head>
+<body>
+	
+	<a th:href="@{/koku/linkToAddTeacher}">New a Teacher</a>
+	<table border = 1>
+		<tr>
+			<th>tea_id</th>
+			<th>tea_name</th>
+			<th>tea_sex</th>
+			<th>tea_lesson</th>
+			<th>tea_birth</th>
+			<th>tea_comment</th>
+			<th>update</th>
+			<th>delete</th>
+		</tr>
+		<tr th:each="tea : ${teachers}">
+			<td th:text="${tea.tea_id}"></td>
+			<td th:text="${tea.tea_name}"></td>
+			<td th:text="${tea.tea_sex} == 0 ? '女' : '男'"></td>
+			<td th:text="${tea.lessonName}"></td>
+			<td th:text="${tea.tea_birth}"></td>
+			<td th:text="${tea.tea_comment}"></td>
+			<td><a th:href="@{/koku/linkToUpdateTeacher/{id}(id=${tea.tea_id})}">update</a></td>
+			<td><a th:href="@{/koku/deleteTeacher/{id}(id=${tea.tea_id})}">delete</a></td>
+		</tr>
+		
+	</table>
+	<br/>
+	<a th:href="@{/}">indexへ戻す</a><br/>
+	<span th:text="${#strings.isEmpty(deleteErrorMsg)} ? '' : ${deleteErrorMsg} "></span>
+</body>
+</html>

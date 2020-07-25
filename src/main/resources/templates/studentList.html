@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>StudentList page</title>
+</head>
+<body>
+	
+	<a th:href="@{/koku/linkToAddStudent}">New a Student</a>
+	<table border = 1>
+		<tr>
+			<th>stu_id</th>
+			<th>stu_name</th>
+			<th>stu_sex</th>
+			<th>stu_birth</th>
+			<th>teacher</th>
+			<th>update</th>
+			<th>delete</th>
+		</tr>
+		<tr th:each="stu : ${students}">
+			<td th:text="${stu.stu_id}"></td>
+			<td th:text="${stu.stu_name}"></td>
+			<td th:text="${stu.stu_sex} == 0 ? '女' : '男'"></td>
+			<td th:text="${stu.stu_birth}"></td>
+			<td th:text="${stu.tea_name}"></td>
+			<td><a th:href="@{/koku/linkToUpdateStudent/{id}(id=${stu.stu_id})}">update</a></td>
+			<td><a th:href="@{/koku/deleteStudent/{id}(id=${stu.stu_id})}">delete</a></td>
+		</tr>
+		
+	</table>
+	<br/>
+	<a th:href="@{/}">indexへ戻す</a>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form th:action="@{/koku/updateTeacher}" th:object="${updateTeacherForm}" method="post">
+		<input name="tea_id" th:field="*{tea_id}" hidden />
+		<span>teacher name:</span> 
+		<input name="tea_name" th:field="*{tea_name}" /> 
+			<span th:if="${#fields.hasErrors('tea_name')}" th:errors="*{tea_name}" style="color:red"></span><br /> 
+		<span>teacher sex:</span> 
+		<span>male</span> <input name="tea_sex" type="radio" value="1" th:field="*{tea_sex}" />
+		<span>female</span> <input name="tea_sex" type="radio" value="0" th:field="*{tea_sex}" /> 
+			<span th:if="${#fields.hasErrors('tea_sex')}" th:errors="*{tea_sex}" style="color:red"></span><br />
+		<span>teacher lesson:</span>
+		<select name="updatedTeacherLesson">
+			<option value="">select teacher</option>
+			<option th:each="lesson : ${lessons}" th:text="${lesson.value}" th:value="${lesson.key}" th:selected="${lesson.key} == *{updatedTeacherLesson}"></option>
+		</select> 
+			<span th:if="${#fields.hasErrors('updatedTeacherLesson')}" th:errors="*{updatedTeacherLesson}" style="color:red"></span><br/>
+		<span>teacher birthday</span> 
+		<input name="tea_birth" type="date" th:field="*{tea_birth}" /> 
+		<span th:if="${#fields.hasErrors('tea_birth')}" th:errors="*{tea_birth}" style="color:red"></span><br />
+		<span>teacher comment</span> 
+		<textarea rows="3" cols="50" name="tea_comment" th:field="*{tea_comment}">			
+		</textarea> 
+			<span th:if="${#fields.hasErrors('tea_comment')}" th:errors="*{tea_comment}" style="color:red"></span><br /> 
+		<input type="submit" value="click to update" />
+	</form>
+
+
+</body>
+</html>

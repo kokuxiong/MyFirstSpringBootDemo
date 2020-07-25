@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form th:action="@{/koku/addStudent}" th:object="${addStuForm}" method="post">
+		<span>student name:</span> 
+		<input name="stuName" th:field="*{stuName}" /> <span th:if="${#fields.hasErrors('stuName')}" th:errors="*{stuName}" style="color:red"></span> <br /> 
+		<span>student sex:</span> 
+		<span>male</span> <input type="radio" name="stuSex" value="1" th:field="*{stuSex}" />
+		<span>female</span> <input type="radio" name="stuSex" value="0" th:field="*{stuSex}" /> 
+			<span th:if="${#fields.hasErrors('stuSex')}" th:errors="*{stuSex}" style="color:red" ></span> <br />
+		<span>student birthday</span> 
+		<input type="date" name="stuBirth" th:field="*{stuBirth}" /> <span th:if="${#fields.hasErrors('stuBirth')}" th:errors="*{stuBirth}" style="color:red"></span> <br />
+		<span>teacher</span> 
+		<select name="stuTeacher">
+			<option value="" selected>select teacher</option>
+			<option th:each="tea : ${teachers}" th:text="${tea.tea_name}" th:value="${tea.tea_id}" th:selected="${tea.tea_id} == *{stuTeacher}"></option>
+		</select> 
+			<span th:if="${#fields.hasErrors('stuTeacher')}" th:errors="*{stuTeacher}" style="color:red"></span> <br /> 
+		<input type="submit" value="click to add a student" />
+	</form>
+
+
+</body>
+</html>
