@@ -5,9 +5,11 @@
 <title>index page</title>
 </head>
 <body>
-	
-	<a th:href="@{/koku/studentList}">student list</a>
-	<a th:href="@{/koku/teacherList}">teacher list</a>
-	
+	<ul>
+		<li><a th:href="@{/koku/studentList}">student list</a></li>
+		<li><a th:href="@{/koku/teacherList}">teacher list</a></li>
+	</ul>
+	<br/>
+	<a th:href="@{/logout}">Logout</a>
 </body>
 </html>
