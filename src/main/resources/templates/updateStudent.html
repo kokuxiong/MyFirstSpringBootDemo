@@ -24,6 +24,7 @@
 		</select>
 			<span th:if="${#fields.hasErrors('teacherId')}" th:errors="*{teacherId}" style="color:red"></span> <br /> 
 		<input type="submit" value="click to update" />
+		<a th:href="@{/koku/studentList}">cancel</a>
 	</form>
 
 

@@ -6,8 +6,8 @@
 </head>
 <body>
 	<ul>
-		<li><a th:href="@{/koku/studentList}">student list</a></li>
-		<li><a th:href="@{/koku/teacherList}">teacher list</a></li>
+		<li th:if="${auth} == 90 or ${auth} == 80 or ${auth} == 10"><a th:href="@{/koku/studentList}">student list</a></li>
+		<li th:if="${auth} == 80 or ${auth} == 10"><a th:href="@{/koku/teacherList}">teacher list</a></li>
 	</ul>
 	<br/>
 	<a th:href="@{/logout}">Logout</a>

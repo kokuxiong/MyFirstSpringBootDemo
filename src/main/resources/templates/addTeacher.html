@@ -27,6 +27,7 @@
 		<textarea rows="3" cols="50" name="teaComment" th:field="*{teaComment}" ></textarea>
 			<span th:if="${#fields.hasErrors('teaComment')}" th:errors="*{teaComment}" style="color:red"></span> <br /> 
 		<input type="submit" value="click to add a teacher" />
+		<a th:href="@{/koku/teacherList}">cancel</a>
 	</form>
 
 

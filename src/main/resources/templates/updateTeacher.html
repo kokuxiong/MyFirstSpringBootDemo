@@ -29,6 +29,7 @@
 		</textarea> 
 			<span th:if="${#fields.hasErrors('tea_comment')}" th:errors="*{tea_comment}" style="color:red"></span><br /> 
 		<input type="submit" value="click to update" />
+		<a th:href="@{/koku/teacherList}">cancel</a>
 	</form>
 
 

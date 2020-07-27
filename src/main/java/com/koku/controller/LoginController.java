@@ -33,7 +33,10 @@ public class LoginController {
 		if(user.getUsername().equals(userName) && user.getPassword().equals(password)) {
 			HttpSession session = request.getSession(true);
 			session.setAttribute("userName", user.getUsername());
+			session.setAttribute("auth", user.getAuth());
 			session.setMaxInactiveInterval(1800);
+			//auth
+			model.addAttribute("auth", user.getAuth());
 			return "index";
 		}
 		
